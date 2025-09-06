@@ -1,11 +1,15 @@
-const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
+const { getDefaultConfig } = require('expo/metro-config');
+const path = require('path');
 
-/**
- * Metro configuration
- * https://reactnative.dev/docs/metro
- *
- * @type {import('@react-native/metro-config').MetroConfig}
- */
-const config = {};
+/** @type {import('metro-config').MetroConfig} */
+const config = getDefaultConfig(__dirname);
 
-module.exports = mergeConfig(getDefaultConfig(__dirname), config);
+config.resolver.resolveRequest = (context, moduleName, platform) => {
+  if (platform === 'web' && moduleName.startsWith('react-native-maps')) {
+    return context.resolveRequest(context, path.resolve(__dirname, './src/mocks/react-native-maps.web.js'), platform);
+  }
+  // Fallback to the default resolver
+  return context.resolveRequest(context, moduleName, platform);
+};
+
+module.exports = config;
