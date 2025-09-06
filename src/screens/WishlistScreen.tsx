@@ -1,0 +1,1 @@
+/* WishlistScreen.tsx - Commented out by Gemini */

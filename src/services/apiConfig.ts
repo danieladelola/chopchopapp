@@ -1,0 +1,118 @@
+
+import { API_BASE_URL } from '@env';
+
+export const BASE_URL = API_BASE_URL;
+
+export const API_ENDPOINTS = {
+  auth: {
+    signUp: '/api/v1/auth/sign-up',
+    login: '/api/v1/auth/login',
+    forgotPassword: '/api/v1/auth/forgot-password',
+    verifyToken: '/api/v1/auth/verify-token',
+    resetPassword: '/api/v1/auth/reset-password',
+    verifyPhone: '/api/v1/auth/verify-phone',
+    checkEmail: '/api/v1/auth/check-email',
+    verifyEmail: '/api/v1/auth/verify-email',
+    guestLogin: '/api/v1/auth/guest/request',
+  },
+  products: {
+    latest: '/api/v1/products/latest',
+    popular: '/api/v1/products/popular',
+    mostReviewed: '/api/v1/products/most-reviewed',
+    setMenu: '/api/v1/products/set-menu',
+    recommended: '/api/v1/products/recommended',
+    details: (id: string) => `/api/v1/products/details/${id}`,
+    submitReview: '/api/v1/products/reviews/submit',
+    recommendedMostReviewed: '/api/v1/products/recommended/most-reviewed',
+  },
+    customer: {
+    foodList: '/api/v1/customer/food-list',
+    info: '/api/v1/customer/info',
+    updateProfile: '/api/v1/customer/update-profile',
+    removeAccount: '/api/v1/customer/remove-account',
+    updateInterest: '/api/v1/customer/update-interest',
+    suggestedFoods: '/api/v1/customer/suggested-foods',
+    updateZone: '/api/v1/customer/update-zone',
+    order: {
+      place: '/api/v1/customer/order/place',
+      track: (id: string) => `/api/v1/customer/order/track?order_id=${id}`,
+      runningOrders: '/api/v1/customer/order/running-orders',
+      orderSubscriptionList: '/api/v1/customer/order/order-subscription-list',
+      list: '/api/v1/customer/order/list',
+      details: (id: string) => `/api/v1/customer/order/details?order_id=${id}`,
+      cancel: '/api/v1/customer/order/cancel',
+      cancellationReasons: '/api/v1/customer/order/cancellation-reasons',
+      refundReasons: '/api/v1/customer/order/refund-reasons',
+      refundRequest: '/api/v1/customer/order/refund-request',
+      paymentMethod: '/api/v1/customer/order/payment-method',
+      sendNotification: '/api/v1/customer/order/send-notification',
+      checkRestaurantValidation: '/api/v1/customer/order/check-restaurant-validation',
+      orderAgain: '/api/v1/customer/order-again',
+      offlinePayment: '/api/v1/customer/order/offline-payment',
+      offlinePaymentUpdate: '/api/v1/customer/order/offline-payment-update',
+    },
+    wishlist: {
+      get: '/api/v1/customer/wish-list',
+      add: (id: string) => `/api/v1/customer/wish-list/add?product_id=${id}`,
+      remove: (id: string) => `/api/v1/customer/wish-list/remove?product_id=${id}`,
+    },
+    address: {
+      list: '/api/v1/customer/address/list',
+      add: '/api/v1/customer/address/add',
+      update: (id: string) => `/api/v1/customer/address/update/${id}`,
+      delete: (id: string) => `/api/v1/customer/address/delete?address_id=${id}`,
+    },
+     notifications: '/api/v1/customer/notifications',
+    wallet: {
+      transactions: '/api/v1/customer/wallet/transactions',
+      addFund: '/api/v1/customer/wallet/add-fund',
+      bonuses: '/api/v1/customer/wallet/bonuses',
+    },
+    loyaltyPoint: {
+      transactions: '/api/v1/customer/loyalty-point/transactions',
+      pointTransfer: '/api/v1/customer/loyalty-point/point-transfer',
+    },
+  },
+  categories: {
+    get: '/api/v1/categories',
+    childes: (id: string) => `/api/v1/categories/childes/${id}`,
+    products: (id: string) => `/api/v1/categories/products/${id}`,
+    productsAll: (id: string) => `/api/v1/categories/products/${id}/all`,
+    restaurants: (id: string) => `/api/v1/categories/restaurants/${id}`,
+  },
+  restaurants: {
+    get: '/api/v1/restaurants',
+    popular: '/api/v1/restaurants/popular',
+    latest: '/api/v1/restaurants/latest',
+    details: (id: string) => `/api/v1/restaurants/details/${id}`,
+    reviews: '/api/v1/restaurants/reviews',
+    recentlyViewed: '/api/v1/restaurants/recently-viewed-restaurants',
+    dineIn: '/api/v1/restaurants/dine-in',
+  },
+  campaigns: {
+    basic: '/api/v1/campaigns/basic',
+    item: '/api/v1/campaigns/item',
+    details: (id: string) => `/api/v1/campaigns/basic-campaign-details?basic_campaign_id=${id}`,
+  },
+  cart: {
+    list: '/api/v1/customer/cart/list',
+    add: '/api/v1/customer/cart/add',
+    update: '/api/v1/customer/cart/update',
+    remove: '/api/v1/customer/cart/remove',
+    removeItem: '/api/v1/customer/cart/remove-item',
+    addMultiple: '/api/v1/customer/cart/add-multiple',
+  },
+  coupons: {
+    list: '/api/v1/coupon/list',
+    restaurantWise: '/api/v1/coupon/restaurant-wise-coupon',
+    apply: (code: string) => `/api/v1/coupon/apply?code=${code}`,
+  },
+  zone: {
+    getZoneId: '/api/v1/config/get-zone-id',
+    check: '/api/v1/zone/check',
+    list: '/api/v1/zone/list',
+  },
+  offlinePayment: {
+    list: '/api/v1/offline_payment_method_list',
+  },
+};
